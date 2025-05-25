@@ -60,10 +60,14 @@ export const Hero = () => {
       </div>
 
       <div className="hidden lg:block flex-1 ml-12">
-        <div className="relative">
-          <div className="w-96 h-96 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full opacity-20 absolute -top-8 -right-8"></div>
-          <div className="w-80 h-80 bg-slate-800 rounded-lg flex items-center justify-center relative z-10">
-            <div className="text-6xl font-bold text-orange-500">HS</div>
+        <div className="relative flex justify-center">
+          <div className="w-96 h-96 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg opacity-20 absolute -top-8 -right-8"></div>
+          <div className="w-80 h-80 bg-slate-800 rounded-lg overflow-hidden relative z-10 border-2 border-orange-500/20">
+            <img 
+              src="https://i.postimg.cc/DyCGvqL5/Whats-App-Image-2025-05-25-at-7-37-55-PM.jpg" 
+              alt="Hariram S - Profile Picture" 
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>
