@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -89,7 +88,7 @@ export const Contact = () => {
               </div>
               <div>
                 <h4 className="font-semibold">Email</h4>
-                <p className="text-gray-300">hariram.student@example.com</p>
+                <p className="text-gray-300">hari006ram@gmail.com</p>
               </div>
             </div>
 
@@ -101,7 +100,7 @@ export const Contact = () => {
               </div>
               <div>
                 <h4 className="font-semibold">Phone</h4>
-                <p className="text-gray-300">+91 XXXXX XXXXX</p>
+                <p className="text-gray-300">+91 6369119364</p>
               </div>
             </div>
 
@@ -113,7 +112,9 @@ export const Contact = () => {
               </div>
               <div>
                 <h4 className="font-semibold">LinkedIn</h4>
-                <p className="text-gray-300">linkedin.com/in/hariram-s</p>
+                <a href="https://in.linkedin.com/in/hariram-s-b67543297" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-orange-500 transition-colors">
+                  linkedin.com/in/hariram-s-b67543297
+                </a>
               </div>
             </div>
           </div>
