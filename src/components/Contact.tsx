@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
+import { useToast } from "@/hooks/use-toast";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,11 +12,51 @@ export const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      const result = await emailjs.send(
+        'service_pjw2kei', // Service ID
+        'template_fus59fu', // Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Hariram S',
+        },
+        'iLFmGeYTIyFKIIAuo' // Public Key
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your message. I'll get back to you soon!",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact me directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -111,6 +153,7 @@ export const Contact = () => {
                 className="w-full bg-slate-700 border-slate-600 text-white"
                 placeholder="Enter your name"
                 required
+                disabled={isSubmitting}
               />
             </div>
 
@@ -127,6 +170,7 @@ export const Contact = () => {
                 className="w-full bg-slate-700 border-slate-600 text-white"
                 placeholder="Enter your email"
                 required
+                disabled={isSubmitting}
               />
             </div>
 
@@ -143,14 +187,16 @@ export const Contact = () => {
                 className="w-full bg-slate-700 border-slate-600 text-white resize-none"
                 placeholder="Tell me about your project or ask any questions..."
                 required
+                disabled={isSubmitting}
               />
             </div>
 
             <Button 
               type="submit" 
-              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3"
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isSubmitting}
             >
-              Send Message
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </form>
         </div>
