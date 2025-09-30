@@ -9,21 +9,48 @@ export const Projects = () => {
       description: "Eye-tracking drowsiness detection system with GPS updates to improve rider safety. Utilizes advanced sensors and machine learning algorithms.",
       tech: ["IoT", "Machine Learning", "GPS", "Sensors", "Python"],
       category: "IoT & Safety",
-      color: "orange"
+      color: "orange",
+      link: ""
     },
     {
       title: "LMS for Arrear Students",
       description: "Comprehensive learning management system designed specifically for students with academic backlogs, featuring personalized study plans.",
       tech: ["React", "Node.js", "MySQL", "Express.js"],
       category: "Web Application",
-      color: "blue"
+      color: "blue",
+      link: ""
     },
     {
       title: "VK Bone and Joint Clinic Website",
       description: "Responsive full-stack website enabling appointment booking and patient information management with secure data handling.",
       tech: ["React", "Node.js", "MySQL", "Responsive Design"],
       category: "Healthcare",
-      color: "green"
+      color: "green",
+      link: ""
+    },
+    {
+      title: "Agrieazee",
+      description: "Smart digital platform supporting farmers with crop insights, field management, and AI-based advisory services. Features soil testing, crop scheduling, irrigation guidance, and fertilizer dose calculator.",
+      tech: ["AI/ML", "IoT", "Python", "Data Analytics"],
+      category: "AgriTech",
+      color: "green",
+      link: ""
+    },
+    {
+      title: "Vita Rails",
+      description: "Professional digital platform delivering homely food to train passengers. Features meal pre-booking, location-based menus, and integrated billing with delivery management.",
+      tech: ["React", "Node.js", "Payment Integration", "Responsive Design"],
+      category: "Food Tech",
+      color: "blue",
+      link: "https://vitarailservices.com/"
+    },
+    {
+      title: "Plant Disease Detection",
+      description: "AI-powered system using computer vision to detect plant diseases from leaf images. Provides treatment suggestions and preventive solutions to reduce crop loss and increase farming efficiency.",
+      tech: ["Computer Vision", "Machine Learning", "Python", "TensorFlow"],
+      category: "AI & Agriculture",
+      color: "orange",
+      link: ""
     }
   ];
 
@@ -75,13 +102,25 @@ export const Projects = () => {
                 ))}
               </div>
               
-              <Button 
-                variant="ghost" 
-                className="text-orange-500 hover:text-orange-400 hover:bg-orange-500/10 p-0"
-              >
-                View Details
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <Button 
+                    variant="ghost" 
+                    className="text-orange-500 hover:text-orange-400 hover:bg-orange-500/10 p-0"
+                  >
+                    View Live Site
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
+              ) : (
+                <Button 
+                  variant="ghost" 
+                  className="text-orange-500 hover:text-orange-400 hover:bg-orange-500/10 p-0"
+                >
+                  View Details
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              )}
             </div>
           </div>
         ))}
